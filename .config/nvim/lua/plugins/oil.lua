@@ -8,7 +8,7 @@ return {
             keymaps = {
                 ["<C-h>"] = false,
                 ["<C-c>"] = false,
-                ["<M-h>"] = "actions.select_split",
+                ["<M-h>"] = false,
                 ["q"] = "actions.close",
             },
             delete_to_trash = true,
