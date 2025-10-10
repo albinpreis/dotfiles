@@ -13,7 +13,7 @@ return {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
                 local opts = { buffer = ev.buf, silent = true }
-                
+
                 -- Get the client's position encoding
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 local encoding = client and client.offset_encoding or "utf-16"
@@ -144,17 +144,43 @@ return {
         vim.lsp.enable("emmet_ls")
 
         -- TypeScript / JavaScript
-        vim.lsp.config("ts_ls", {
-            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            single_file_support = true,
-            init_options = {
-                preferences = {
-                    includeCompletionsForModuleExports = true,
-                    includeCompletionsForImportStatements = true,
+        local lspconfig_util = require("lspconfig.util")
+
+        local vtsls_available = vim.fn.executable("vtsls") == 1
+
+        if vtsls_available then
+            vim.lsp.config("vtsls", {
+                root_dir = lspconfig_util.root_pattern("tsconfig.json", "angular.json", "package.json", ".git"),
+                settings = {
+                    typescript = {
+                        preferences = {
+                            importModuleSpecifier = "non-relative",
+                            includeCompletionsForModuleExports = true,
+                            includeCompletionsForImportStatements = true,
+                        },
+                    },
+                    javascript = {
+                        preferences = {
+                            importModuleSpecifier = "non-relative",
+                        },
+                    },
                 },
-            },
-        })
-        vim.lsp.enable("ts_ls")
+            })
+            vim.lsp.enable("vtsls")
+        else
+            vim.lsp.config("ts_ls", {
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+                single_file_support = false,
+                root_dir = lspconfig_util.root_pattern("tsconfig.json", "package.json", ".git"),
+                init_options = {
+                    preferences = {
+                        includeCompletionsForModuleExports = true,
+                        includeCompletionsForImportStatements = true,
+                    },
+                },
+            })
+            vim.lsp.enable("ts_ls")
+        end
 
         -- Go
         vim.lsp.config("gopls", {

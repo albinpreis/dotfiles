@@ -51,7 +51,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # aliases
 alias ls='ls --color'
-alias neoconf='cd ~/.config/nvim && nvim'
+alias neoconf='cd ~/dotfiles/.config/nvim && nvim'
 alias vim='nvim'
 alias sri='cd ~/source/repos/sri/'
 

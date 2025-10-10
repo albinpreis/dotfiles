@@ -43,6 +43,7 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "ts_ls", -- currently using a ts plugin
+                    "vtsls",
                     "html",
                     "cssls",
                     "tailwindcss",

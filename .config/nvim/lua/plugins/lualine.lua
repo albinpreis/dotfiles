@@ -13,6 +13,7 @@ return {
 			color6 = "#a1aab8",
 			color7 = "#828697",
 			color8 = "#ae81ff",
+            color9 = "#27E0F5"
 		}
 		local my_lualine_theme = {
 			replace = {
@@ -34,7 +35,7 @@ return {
 				b = { fg = colors.color2, bg = colors.color3 },
 			},
 			insert = {
-				a = { fg = colors.color0, bg = colors.color2, gui = "bold" },
+				a = { fg = colors.color0, bg = colors.color9, gui = "bold" },
 				b = { fg = colors.color2, bg = colors.color3 },
 			},
 		}
