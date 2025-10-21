@@ -20,8 +20,8 @@ return {
                     local icon, icon_color = devicons.get_icon(filename, ext, { default = true })
 
                     local modified = vim.bo[props.buf].modified
-                    
                     return {
+
                         { " ", icon, " ", guifg = icon_color },
                         { filename, gui = modified and "bold" or "none" },
                         modified and { " [+]", guifg = "#ff9e64" } or "",

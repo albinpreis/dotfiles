@@ -50,10 +50,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # aliases
-alias ls='ls --color'
+alias ls='ls -al --color'
 alias neoconf='cd ~/dotfiles/.config/nvim && nvim'
 alias vim='nvim'
 alias sri='cd ~/source/repos/sri/'
+alias g='git'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
